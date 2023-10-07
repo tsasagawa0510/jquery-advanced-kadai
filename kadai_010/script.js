@@ -38,10 +38,6 @@ $(function() {
     // エラー判定とメッセージを取得
     let error = result.error;
     let message = result.message;
-
-    if(inputCheckArea() == true) {
-      alert('都道府県を選択してください。\n');
-    }
     
     // エラーがなかったらフォームを送信する
     if(error == false) {
@@ -86,7 +82,7 @@ $(function() {
     inputCheck();
   });
   $('#prefecture').blur(function() {
-    inputCheckArea()
+    inputCheck()
   });
 
 
@@ -161,6 +157,17 @@ $(function() {
       $('#tel').css('background-color', '#fafafa');
     }
 
+    // 都道府県のチェック
+    if($('#prefecture').val() == ''){
+      // エラーあり
+      $('#prefecture').css('background-color', '#f79999');
+      error = true;
+      message += '都道府県を選択してください。\n';
+   }else {
+     // エラーなし
+     $('#prefecture').css('background-color', '#fafafa');
+   }
+
     // 個人情報のチェックボックスのチェック
     if($('#agree').prop('checked') == false){
       error = true;
@@ -181,21 +188,5 @@ $(function() {
     }
 
     return result;
-  }
-
-  function inputCheckArea() {
-
-    let error = false;
-    // 都道府県のチェック
-    if($('#prefecture').val() == ''){
-      // エラーあり
-      $('#prefecture').css('background-color', '#f79999');
-      error = true;
-   }else {
-     // エラーなし
-     $('#prefecture').css('background-color', '#fafafa');
-   }
-
-   return error;
   }
 });
