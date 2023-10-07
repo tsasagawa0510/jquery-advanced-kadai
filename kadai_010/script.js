@@ -162,7 +162,7 @@ $(function() {
        // エラーあり
        $('#prefecture').css('background-color', '#f79999');
        error = true;
-       message += '都道府県を選択してください。\n';
+       alert( '都道府県を選択してください。\n');
     }else {
       // エラーなし
       $('#prefecture').css('background-color', '#fafafa');
